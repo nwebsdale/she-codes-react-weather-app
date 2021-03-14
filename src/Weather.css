@@ -1,0 +1,43 @@
+.Weather a {
+  color: #e2e2e2;
+}
+
+.Weather a:hover {
+  color: #007bff;
+}
+
+.Weather h2 {
+  color: #e2e2e2;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.Weather .content-padding {
+  padding-left: 5px;
+}
+
+.Weather .weather-description {
+  text-transform: capitalize;
+}
+
+.Weather .main-icon {
+  color: #e2e2e2;
+  font-size: 150px;
+  margin: 15px;
+}
+
+.Weather .temp {
+  color: #e2e2e2;
+  display: block;
+  font-size: 40px;
+  font-weight: 350;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Weather .temp-unit {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

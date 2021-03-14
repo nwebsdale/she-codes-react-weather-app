@@ -3,7 +3,7 @@ import "./Search.css";
 
 export default function App() {
   const [city, setCity] = useState("");
-  const [displayCity, setDisplayCity] = useState("");
+  const [displayCity, setDisplayCity] = useState("London");
 
   function handleSearch(event) {
     event.preventDefault();
