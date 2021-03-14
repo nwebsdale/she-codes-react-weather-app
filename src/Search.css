@@ -1,0 +1,49 @@
+.Search h1 {
+  color: #ffffff;
+  font-size: 35px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.Search h3 {
+  color: #fafafa;
+  font-size: 18px;
+  font-weight: 250;
+  margin-bottom: 5px;
+}
+
+.Search h3.time {
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 250;
+  margin-bottom: 5px;
+}
+
+.Search i.location {
+  color: #007bff;
+  font-size: 30px;
+}
+
+.Search i.location:hover {
+  color: #0069d9;
+  cursor: pointer;
+}
+
+.Search .enter-city {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #007bff;
+}
+
+.Search .search-bar {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.Search .search-form {
+  margin-bottom: 10px;
+}
+
+.Search .content-padding {
+  padding-left: 5px;
+}
