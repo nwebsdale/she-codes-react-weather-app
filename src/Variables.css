@@ -1,0 +1,25 @@
+.Variables .weather-variables {
+  margin: 8px auto;
+  text-align: center;
+}
+
+.Variables .weather-variables i {
+  color: #e2e2e2;
+  float: left;
+  font-size: 20px;
+  margin: 5px;
+  padding-left: 9px;
+}
+
+.Variables .weather-variables p {
+  color: #e2e2e2;
+  font-size: 14px;
+  margin: 0px;
+}
+
+.Variables .weather-variables strong {
+  color: #e2e2e2;
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
