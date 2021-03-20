@@ -5,10 +5,10 @@ import FormatDate from "./FormatDate";
 import Weather from "./Weather";
 import Variables from "./Variables.js";
 
-export default function App() {
+export default function Search(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState("Berlin");
-  const [displayCity, setDisplayCity] = useState("Berlin");
+  const [city, setCity] = useState(props.defaultLocation);
+  const [displayCity, setDisplayCity] = useState(props.defaultLocation);
 
   function displayWeather(response) {
     console.log(response.data);
@@ -25,8 +25,16 @@ export default function App() {
     });
   }
 
+  function search() {
+    const apiKey = "9ecd0df390ed7ae45c465a580e328de1";
+    const unit = "metric";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(displayWeather);
+  }
+
   function handleSearch(event) {
     event.preventDefault();
+    search();
     setDisplayCity(city);
   }
 
@@ -71,10 +79,6 @@ export default function App() {
         </div>
         <div className="row content-padding">
           <FormatDate date={weatherData.date} />
-          {/* <div className="col-12">
-            <h3>Thursday 21 January 2021</h3>
-            <h3 className="time">Last updated: 21:00</h3>
-          </div> */}
         </div>
         <Weather
           maxTemp={Math.round(weatherData.highTemp)}
@@ -90,14 +94,7 @@ export default function App() {
       </div>
     );
   } else {
-    const apiKey = "9ecd0df390ed7ae45c465a580e328de1";
-    const unit = "metric";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-    axios.get(apiUrl).then(displayWeather);
-
+    search();
     return "Loading...";
   }
-
-  // const [city, setCity] = useState("");
-  // const [displayCity, setDisplayCity] = useState("London");
 }
