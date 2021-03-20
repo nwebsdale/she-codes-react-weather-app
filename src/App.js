@@ -17,7 +17,7 @@ export default function App() {
             className="open-source"
             href="https://github.com/nwebsdale/she-codes-react-weather-app"
             target="_blank"
-            target="_blank"
+            rel="noreferrer"
           >
             Open-source code
           </a>

@@ -18,7 +18,13 @@ export default function Weather() {
           <div className="row">
             <div className="temp-unit">
               <p>
-                <a href="#">°C</a> | <a href="#">°F</a>
+                <a rel="noreferrer" href=" ">
+                  °C
+                </a>{" "}
+                |{" "}
+                <a rel="noreferrer" href=" ">
+                  °F
+                </a>
               </p>
             </div>
           </div>
