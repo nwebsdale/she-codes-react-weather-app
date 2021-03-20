@@ -1,7 +1,7 @@
 import React from "react";
 import "./Weather.css";
 
-export default function Weather() {
+export default function Weather(props) {
   return (
     <div className="Weather">
       <div className="row align-items-center">
@@ -10,10 +10,10 @@ export default function Weather() {
         </div>
         <div className="col-6">
           <p className="row temp">
-            <strong>8°C</strong>
+            <strong>{props.maxTemp}°C</strong>
           </p>
 
-          <p className="row temp">3°C</p>
+          <p className="row temp">{props.minTemp}°C</p>
 
           <div className="row">
             <div className="temp-unit">
@@ -32,7 +32,7 @@ export default function Weather() {
       </div>
       <div className="row content-padding">
         <div className="col-12">
-          <h2 className="weather-description">thick cloud</h2>
+          <h2 className="weather-description">{props.weatherType}</h2>
         </div>
       </div>
     </div>

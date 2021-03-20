@@ -1,0 +1,13 @@
+.FormatDate h3 {
+  color: #fafafa;
+  font-size: 18px;
+  font-weight: 250;
+  margin: 0px 0px 5px 15px;
+}
+
+.FormatDate h3.time {
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 250;
+  margin: 0px 0px 5px 15px;
+}

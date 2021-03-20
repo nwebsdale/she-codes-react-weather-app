@@ -1,7 +1,7 @@
 import React from "react";
 import "./Variables.css";
 
-export default function Variables() {
+export default function Variables(props) {
   return (
     <div className="Variables">
       <div className="row weather-variables">
@@ -9,7 +9,7 @@ export default function Variables() {
           <strong>Wind Speed</strong>
           <br />
           <i className="fas fa-wind wind"></i>
-          <p>11mph</p>
+          <p>{props.windSpeed}mph</p>
         </div>
         <div className="col-4">
           <strong>Sunrise/set</strong>
@@ -24,7 +24,7 @@ export default function Variables() {
           <strong>Humidity</strong>
           <br />
           <i className="fas fa-tint humidity"></i>
-          <p>72%</p>
+          <p>{props.humid}%</p>
         </div>
       </div>
     </div>

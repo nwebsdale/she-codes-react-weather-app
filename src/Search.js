@@ -1,9 +1,29 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Search.css";
+import FormatDate from "./FormatDate";
+import Weather from "./Weather";
+import Variables from "./Variables.js";
 
 export default function App() {
-  const [city, setCity] = useState("");
-  const [displayCity, setDisplayCity] = useState("London");
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState("Berlin");
+  const [displayCity, setDisplayCity] = useState("Berlin");
+
+  function displayWeather(response) {
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      highTemp: response.data.main.temp_max,
+      lowTemp: response.data.main.temp_min,
+      description: response.data.weather[0].description,
+      wind: response.data.wind.speed,
+      sunrise: response.data.sys.sunrise * 1000,
+      sunset: response.data.sys.sunset * 1000,
+      humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
+    });
+  }
 
   function handleSearch(event) {
     event.preventDefault();
@@ -13,46 +33,71 @@ export default function App() {
   function updateCity(event) {
     setCity(event.target.value);
   }
-  return (
-    <div className="Search">
-      <div className="row search-bar">
-        <div className="col">
-          <form onSubmit={handleSearch}>
-            <div className="row form-inline">
-              <div className="col-10">
-                <input
-                  className="form-control enter-city shadow"
-                  type="text"
-                  placeholder="Enter City"
-                  autoFocus={true}
-                  autoComplete={false}
-                  onChange={updateCity}
-                />
 
-                <input
-                  className="form-control btn btn-primary search-form shadow"
-                  type="submit"
-                  value="Search"
-                />
+  if (weatherData.ready) {
+    return (
+      <div className="Search">
+        <div className="row search-bar">
+          <div className="col">
+            <form onSubmit={handleSearch}>
+              <div className="row form-inline">
+                <div className="col-10">
+                  <input
+                    className="form-control enter-city shadow"
+                    type="text"
+                    placeholder="Enter City"
+                    autoFocus={true}
+                    autoComplete="false"
+                    onChange={updateCity}
+                  />
+
+                  <input
+                    className="form-control btn btn-primary search-form shadow"
+                    type="submit"
+                    value="Search"
+                  />
+                </div>
+                <div className="col-2">
+                  <i className="fas fa-search-location location"></i>
+                </div>
               </div>
-              <div className="col-2">
-                <i className="fas fa-search-location location"></i>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-      <div className="row content-padding">
-        <div className="col-12">
-          <h1>{displayCity}</h1>
+        <div className="row content-padding">
+          <div className="col-12">
+            <h1>{displayCity}</h1>
+          </div>
         </div>
-      </div>
-      <div className="row content-padding">
-        <div className="col-12">
-          <h3>Thursday 21 January 2021</h3>
-          <h3 className="time">Last updated: 21:00</h3>
+        <div className="row content-padding">
+          <FormatDate date={weatherData.date} />
+          {/* <div className="col-12">
+            <h3>Thursday 21 January 2021</h3>
+            <h3 className="time">Last updated: 21:00</h3>
+          </div> */}
         </div>
+        <Weather
+          maxTemp={Math.round(weatherData.highTemp)}
+          minTemp={Math.round(weatherData.lowTemp)}
+          weatherType={weatherData.description}
+        />
+        <Variables
+          windSpeed={Math.round(weatherData.wind)}
+          sunUp={weatherData.sunrise}
+          sunDown={weatherData.sunset}
+          humid={weatherData.humidity}
+        />
       </div>
-    </div>
-  );
+    );
+  } else {
+    const apiKey = "9ecd0df390ed7ae45c465a580e328de1";
+    const unit = "metric";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(displayWeather);
+
+    return "Loading...";
+  }
+
+  // const [city, setCity] = useState("");
+  // const [displayCity, setDisplayCity] = useState("London");
 }
