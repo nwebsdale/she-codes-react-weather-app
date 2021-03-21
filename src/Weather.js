@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "./Icon.js";
+import Conversion from "./Conversion";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -12,25 +13,7 @@ export default function Weather(props) {
           <Icon iconType={currentIcon} />
         </div>
         <div className="col-6">
-          <p className="row temp">
-            <strong>{props.maxTemp}°C</strong>
-          </p>
-
-          <p className="row temp">{props.minTemp}°C</p>
-
-          <div className="row">
-            <div className="temp-unit">
-              <p>
-                <a rel="noreferrer" href=" ">
-                  °C
-                </a>{" "}
-                |{" "}
-                <a rel="noreferrer" href=" ">
-                  °F
-                </a>
-              </p>
-            </div>
-          </div>
+          <Conversion celsiusMax={props.maxTemp} celsiusMin={props.minTemp} />
         </div>
       </div>
       <div className="row content-padding">
