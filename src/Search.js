@@ -22,6 +22,7 @@ export default function Search(props) {
       sunset: response.data.sys.sunset * 1000,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
+      icon: response.data.weather[0].icon,
     });
   }
 
@@ -84,6 +85,7 @@ export default function Search(props) {
           maxTemp={Math.round(weatherData.highTemp)}
           minTemp={Math.round(weatherData.lowTemp)}
           weatherType={weatherData.description}
+          icon={weatherData.icon}
         />
         <Variables
           windSpeed={Math.round(weatherData.wind)}

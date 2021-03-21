@@ -1,12 +1,15 @@
 import React from "react";
+import Icon from "./Icon.js";
 import "./Weather.css";
 
 export default function Weather(props) {
+  let currentIcon = props.icon;
+  console.log(currentIcon);
   return (
     <div className="Weather">
       <div className="row align-items-center">
         <div className="col-6">
-          <i className="fas fa-cloud main-icon"></i>
+          <Icon iconType={currentIcon} />
         </div>
         <div className="col-6">
           <p className="row temp">
