@@ -3,6 +3,34 @@ import Forecast from "./Forecast.js";
 import "./Variables.css";
 
 export default function Variables(props) {
+  function sunUp(timestamp) {
+    let date = new Date(timestamp);
+
+    let currentHour = date.getHours();
+    if (currentHour < 10) {
+      currentHour = `0${currentHour}`;
+    }
+    let currentMin = date.getMinutes();
+    if (currentMin < 10) {
+      currentMin = `0${currentMin}`;
+    }
+
+    return `${currentHour}:${currentMin}`;
+  }
+  function sunDown(timestamp) {
+    let date = new Date(timestamp);
+
+    let currentHour = date.getHours();
+    if (currentHour < 10) {
+      currentHour = `0${currentHour}`;
+    }
+    let currentMin = date.getMinutes();
+    if (currentMin < 10) {
+      currentMin = `0${currentMin}`;
+    }
+
+    return `${currentHour}:${currentMin}`;
+  }
   return (
     <div className="Variables">
       <div className="row weather-variables">
@@ -17,8 +45,8 @@ export default function Variables(props) {
           <br />
           <i className="far fa-sun sunrise"></i>
           <p>
-            08:21 <br />
-            16:28
+            {sunUp(props.sunUp)} <br />
+            {sunDown(props.sunDown)}
           </p>
         </div>
         <div className="col-4">
