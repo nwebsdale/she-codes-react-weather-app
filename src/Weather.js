@@ -5,7 +5,6 @@ import "./Weather.css";
 
 export default function Weather(props) {
   let currentIcon = props.icon;
-  console.log(currentIcon);
   return (
     <div className="Weather">
       <div className="row align-items-center">

@@ -2,8 +2,6 @@ import React from "react";
 import "./Icon.css";
 
 export default function Icon(props) {
-  console.log(props.currentIcon);
-
   const iconMapping = {
     "01d": "fas fa-sun main-icon",
     "01n": "fas fa-moon main-icon",

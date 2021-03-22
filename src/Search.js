@@ -11,7 +11,6 @@ export default function Search(props) {
   const [displayCity, setDisplayCity] = useState(props.defaultLocation);
 
   function displayWeather(response) {
-    console.log(response.data);
     setWeatherData({
       ready: true,
       highTemp: response.data.main.temp_max,
@@ -23,11 +22,12 @@ export default function Search(props) {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       icon: response.data.weather[0].icon,
+      country: response.data.sys.country,
     });
   }
 
   function search() {
-    const apiKey = "9ecd0df390ed7ae45c465a580e328de1";
+    const apiKey = "3aa4b0af23bba48c8be25e1ce8617c1a";
     const unit = "metric";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(displayWeather);
@@ -75,7 +75,9 @@ export default function Search(props) {
         </div>
         <div className="row content-padding">
           <div className="col-12">
-            <h1>{displayCity}</h1>
+            <h1>
+              {displayCity}, {weatherData.country}
+            </h1>
           </div>
         </div>
         <div className="row content-padding">
@@ -92,6 +94,7 @@ export default function Search(props) {
           sunUp={weatherData.sunrise}
           sunDown={weatherData.sunset}
           humid={weatherData.humidity}
+          city={city}
         />
       </div>
     );
