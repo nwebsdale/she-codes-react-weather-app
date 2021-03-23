@@ -1,6 +1,6 @@
-.Forecast .content-padding {
-  padding-left: 5px;
-}
+/* .Forecast .content-padding {
+  padding-left: 50px;
+} */
 
 .Forecast .days p {
   color: #e2e2e2;
@@ -10,7 +10,7 @@
 }
 
 .Forecast .next-week {
-  margin-top: 20px;
+  margin-top: 200px;
   width: 390px;
   padding-left: 10px;
 }
