@@ -4,6 +4,7 @@ import "./Search.css";
 import FormatDate from "./FormatDate";
 import Weather from "./Weather";
 import Variables from "./Variables.js";
+import Forecast from "./Forecast.js";
 
 export default function Search(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -66,9 +67,6 @@ export default function Search(props) {
                     value="Search"
                   />
                 </div>
-                <div className="col-2">
-                  <i className="fas fa-search-location location"></i>
-                </div>
               </div>
             </form>
           </div>
@@ -96,6 +94,7 @@ export default function Search(props) {
           humid={weatherData.humidity}
           city={city}
         />
+        <Forecast city={city} />
       </div>
     );
   } else {

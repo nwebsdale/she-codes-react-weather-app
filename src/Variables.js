@@ -1,5 +1,4 @@
 import React from "react";
-import Forecast from "./Forecast.js";
 import "./Variables.css";
 
 export default function Variables(props) {
@@ -56,7 +55,6 @@ export default function Variables(props) {
           <p>{props.humid}%</p>
         </div>
       </div>
-      <Forecast city={props.city} />
     </div>
   );
 }
